@@ -1089,7 +1089,7 @@ class Helper
         return false;
     }
 
-    function isApikeyCorrect($api_key)
+    public static function isApikeyCorrect($api_key)
     {
         return (bool) preg_match('/^[a-z\d]{3,30}$/', $api_key);
     }
