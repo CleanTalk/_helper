@@ -868,21 +868,27 @@ class Helper
     public static function toUTF8($obj, $data_codepage = null)
     {
         // Array || object
-        if ( is_array($obj) || is_object($obj) ) {
-            foreach ( $obj as $_key => &$val ) {
+        if (is_array($obj) || is_object($obj)) {
+            foreach ($obj as $_key => &$val) {
                 $val = self::toUTF8($val, $data_codepage);
             }
             unset($val);
-            //String
-        } elseif ( is_string($obj) ) {
-            if ( !preg_match('//u', $obj)
-                && function_exists('mb_detect_encoding')
-                && function_exists('mb_convert_encoding')
-            ) {
-                $encoding = mb_detect_encoding($obj);
-                $encoding = $encoding ?: $data_codepage;
+        //String
+        } else {
+            if ( !preg_match('//u', $obj) ) {
+                if ( function_exists('mb_detect_encoding') ) {
+                    $encoding = mb_detect_encoding($obj);
+                    $encoding = $encoding ?: $data_codepage;
+                } else {
+                    $encoding = $data_codepage;
+                }
+
                 if ( $encoding ) {
-                    $obj = mb_convert_encoding($obj, 'UTF-8', $encoding);
+                    if ( function_exists('mb_convert_encoding') ) {
+                        $obj = mb_convert_encoding($obj, 'UTF-8', $encoding);
+                    } elseif ( version_compare(phpversion(), '8.3', '<') ) {
+                        $obj = @utf8_encode($obj);
+                    }
                 }
             }
         }
