@@ -24,7 +24,8 @@
   },
   "config": {
     "allow-plugins": {
-      "cleantalk/apbct-installer": true
+      "cleantalk/apbct-installer": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   },
   "scripts": {
