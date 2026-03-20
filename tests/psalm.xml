@@ -3,7 +3,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="https://getpsalm.org/schema/config"
         name="Psalm for Cleantalk AntiSpam Protection"
-        autoloader="./bootstrap.php"
         errorLevel="3"
         throwExceptionOnError="0"
         findUnusedCode="true"
