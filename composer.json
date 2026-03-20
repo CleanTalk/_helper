@@ -1,7 +1,6 @@
 {
   "name": "cleantalk/helper",
   "description": "CleanTalk APBCT `Helper` class",
-  "type": "cleantalk-apbct-lib",
   "authors": [
     {
       "name": "CleanTalk Team",
@@ -10,7 +9,6 @@
   ],
   "license": "GPL-3.0-or-later",
   "require": {
-    "cleantalk/apbct-installer": "*",
     "cleantalk/http": "*",
     "cleantalk/templates": "*",
     "cleantalk/variables": "*"
@@ -36,5 +34,10 @@
       "vendor/bin/psalm --no-cache --config=tests/psalm.xml",
       "vendor/bin/psalm --no-cache --config=tests/psalm.xml --taint-analysis"
     ]
+  },
+  "autoload": {
+    "psr-4": {
+      "Cleantalk\\Common\\Helper\\": "/"
+    }
   }
 }
