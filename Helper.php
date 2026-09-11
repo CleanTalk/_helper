@@ -650,9 +650,9 @@ class Helper
      * Resolve DNS to IP
      *
      * @param      $host
-     * @param bool $out
+     * @param false|string $out
      *
-     * @return bool
+     * @return false|string
      * @psalm-suppress PossiblyUnusedMethod
      */
     public static function dnsResolve($host, $out = false)
@@ -1013,7 +1013,9 @@ class Helper
         } elseif ( function_exists('finfo_open') ) {
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $type = finfo_buffer($finfo, $data);
-            finfo_close($finfo);
+            if (PHP_VERSION_ID < 80000) {
+                finfo_close($finfo);
+            }
         }
 
         // @ToDo the method must return comparison result: return $type ===  mime_content_type($data)
