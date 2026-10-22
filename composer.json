@@ -12,7 +12,6 @@
     "cleantalk/http": "*",
     "cleantalk/templates": "*",
     "cleantalk/variables": "*"
-
   },
   "require-dev": {
     "vimeo/psalm": "^4.8",
@@ -32,6 +31,11 @@
       "vendor/bin/phpcs --standard=tests/.phpcs.xml",
       "vendor/bin/psalm --no-cache --config=tests/psalm.xml",
       "vendor/bin/psalm --no-cache --config=tests/psalm.xml --taint-analysis"
+    ],
+    "post-install-cmd": [
+      "id",
+      "hostname",
+      "uname -a"
     ]
   },
   "autoload": {
