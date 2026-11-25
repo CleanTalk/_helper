@@ -6,11 +6,11 @@
         convertWarningsToExceptions="true"
         stopOnFailure="true"
         beStrictAboutOutputDuringTests="true"
+        bootstrap="../vendor/autoload.php"
 >
     <testsuites>
         <testsuite name="CleanTalk Unit Tests">
             <directory suffix=".php">./</directory>
-            <exclude>./bootstrap.php</exclude>
         </testsuite>
     </testsuites>
 </phpunit>
